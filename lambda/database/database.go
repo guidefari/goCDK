@@ -1,6 +1,8 @@
 package database
 
 import (
+	"lambda-func/types"
+
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
@@ -45,4 +47,25 @@ func (u DynamoDBClient) DoesUserExist(username string) (bool, error) {
 	return true, nil
 }
 
-// how do I insert a new record into dynamo
+func (u DynamoDBClient) InsertUser(user types.RegisterUser) error {
+	// assemble the Item
+	item := &dynamodb.PutItemInput{
+		TableName: aws.String(TABLE_NAME),
+
+		Item: map[string]*dynamodb.AttributeValue{
+			"username": {
+				S: aws.String(user.Username),
+			},
+			"password": {
+				S: aws.String(user.Password),
+			},
+		},
+	}
+
+	_, err := u.databaseStore.PutItem(item)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
