@@ -28,3 +28,5 @@ cdk.out
 /dataSources.local.xml
 
 .idea
+lambda/bootstrap
+lambda/function.zip
