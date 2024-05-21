@@ -13,8 +13,8 @@ func main() {
 		switch request.Path {
 		case "/register":
 			return lambdaApp.ApiHandler.RegisterUserHandler(request)
-		//case "/login":
-		//return lambdaApp.ApiHandler.LoginUser(request)
+		case "/login":
+			return lambdaApp.ApiHandler.LoginUser(request)
 		default:
 			return events.APIGatewayProxyResponse{
 				Body:       "Not found",

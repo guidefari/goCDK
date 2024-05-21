@@ -11,6 +11,11 @@ The `cdk.json` file tells the CDK toolkit how to execute your app.
  * `cdk synth`       emits the synthesized CloudFormation template
  * `go test`         run unit tests
 
+
+---
+
+- [Reference course](https://frontendmasters.com/courses/go-aws/)
+
 ## Build lambda
 - `cd lambda`
 - `go mod tidy`
