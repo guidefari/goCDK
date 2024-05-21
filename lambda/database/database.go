@@ -25,6 +25,11 @@ func NewDynamoDBClient() DynamoDBClient {
 	}
 }
 
+type UserStore interface {
+	DoesUserExist(username string) (bool, error)
+	InsertUser(user types.User) error
+}
+
 // does this user exist?
 func (u DynamoDBClient) DoesUserExist(username string) (bool, error) {
 	result, err := u.databaseStore.GetItem(&dynamodb.GetItemInput{
