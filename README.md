@@ -10,3 +10,8 @@ The `cdk.json` file tells the CDK toolkit how to execute your app.
  * `cdk diff`        compare deployed stack with current state
  * `cdk synth`       emits the synthesized CloudFormation template
  * `go test`         run unit tests
+
+## Build lambda
+- `cd lambda`
+- `go mod tidy`
+- `make build`
