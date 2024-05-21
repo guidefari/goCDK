@@ -58,7 +58,6 @@ func (u DynamoDBClient) DoesUserExist(username string) (bool, error) {
 func (u DynamoDBClient) InsertUser(user types.User) error {
 	item := &dynamodb.PutItemInput{
 		TableName: aws.String(TABLE_NAME),
-
 		Item: map[string]*dynamodb.AttributeValue{
 			"username": {
 				S: aws.String(user.Username),
